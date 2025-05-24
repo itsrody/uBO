@@ -1,0 +1,16 @@
+# config/sources.yaml - Much simpler
+filter_sources:
+  easylist:
+    url: "https://easylist.to/easylist/easylist.txt"
+  
+  easyprivacy:
+    url: "https://easylist.to/easylist/easyprivacy.txt"
+  
+  adguard_base:
+    url: "https://filters.adtidy.org/extension/chromium/filters/2.txt"
+  
+  ublock_filters:
+    url: "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt"
+
+git:
+  auto_commit: true
