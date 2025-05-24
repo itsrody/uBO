@@ -1,0 +1,28 @@
+# .github/workflows/update.yml
+name: Update Filters
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install deps
+      run: pip install -r requirements.txt
+    
+    - name: Run optimizer
+      run: python main.py --config config/sources.yaml -v
+    
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: 'chore: update filters'
+        file_pattern: 'output/*.txt'
